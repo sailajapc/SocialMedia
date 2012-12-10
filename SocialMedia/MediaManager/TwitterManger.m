@@ -7,6 +7,9 @@
 //
 
 #import "TwitterManger.h"
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
+#import "Utilites.h"
 
 @implementation TwitterManger
 static TwitterManger *shareTwitterSingleton;
@@ -75,5 +78,48 @@ static TwitterManger *shareTwitterSingleton;
 #pragma mark -
 #pragma mark Class methods
 
+#pragma mark -
+#pragma mark twitter Helper Class method
+
+- (void)TweetwithImage:(UIImage *)attachYourImage message:(NSString *)addMessage viewController:(UIViewController *)viewController
+{
+    TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
+    
+    if([TWTweetComposeViewController canSendTweet])
+    {
+        // Check for image 
+        if (attachYourImage != nil)
+        {
+            [twitter addImage:attachYourImage];
+        }
+        // Check for tweet
+        if (addMessage != nil)
+        {
+            [twitter setInitialText:addMessage];
+        }
+        [viewController presentViewController:twitter animated:YES completion:nil];
+    }
+    else {
+        
+        [Utilites showAlertWithTitle:@"Unable to tweet" message:@"Go to settings and add twitter account" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        return;
+    }
+    
+    // This handler will check for the tweet successful are not 
+    twitter.completionHandler = ^(TWTweetComposeViewControllerResult res){
+        if (res == TWTweetComposeViewControllerResultDone) {
+            
+            [Utilites showAlertWithTitle:@"Tweet Successful!" message:@"You successfully tweeted" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+            
+        } else if (res == TWTweetComposeViewControllerResultCancelled) {
+            
+            
+            [Utilites showAlertWithTitle:@"Tweet UnSuccessful!" message:@"Tweet was Unsuccessfully, try again later" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+            
+        }
+        [viewController dismissModalViewControllerAnimated:YES];
+        [twitter release];
+    };
+}
 
 @end

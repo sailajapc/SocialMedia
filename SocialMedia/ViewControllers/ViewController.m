@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "TwitterManger.h"
 
 @implementation ViewController
 
@@ -20,6 +21,8 @@
 
 - (void)viewDidLoad
 {
+    sharedTwitterSingleton = [TwitterManger shareTwitterSingleton];
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -68,6 +71,8 @@
 - (IBAction)connectTwitter:(id)sender
 {
     //Need to implement
+    
+    [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" viewController:self];
 }
 
 @end
