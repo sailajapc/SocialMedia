@@ -16,6 +16,8 @@
 		8A9DBAF516720FB600547629 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF416720FB600547629 /* ViewController.m */; };
 		8A9DBAF816720FB600547629 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF616720FB600547629 /* ViewController.xib */; };
 		CDA55E821675C20800462836 /* Utilites.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E811675C20800462836 /* Utilites.m */; };
+		CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8B1675C77300462836 /* Accounts.framework */; };
+		CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8E1675C78200462836 /* Twitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		8A9DBAF716720FB600547629 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		CDA55E801675C20800462836 /* Utilites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilites.h; path = External/Utilites/Utilites.h; sourceTree = "<group>"; };
 		CDA55E811675C20800462836 /* Utilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilites.m; path = External/Utilites/Utilites.m; sourceTree = "<group>"; };
+		CDA55E8B1675C77300462836 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		CDA55E8E1675C78200462836 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */,
+				CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */,
 				8A9DBAE216720FB600547629 /* UIKit.framework in Frameworks */,
 				8A9DBAE416720FB600547629 /* Foundation.framework in Frameworks */,
 				8A9DBAE616720FB600547629 /* CoreGraphics.framework in Frameworks */,
@@ -71,6 +77,8 @@
 		8A9DBAE016720FB600547629 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDA55E8E1675C78200462836 /* Twitter.framework */,
+				CDA55E8B1675C77300462836 /* Accounts.framework */,
 				8A9DBAE116720FB600547629 /* UIKit.framework */,
 				8A9DBAE316720FB600547629 /* Foundation.framework */,
 				8A9DBAE516720FB600547629 /* CoreGraphics.framework */,
