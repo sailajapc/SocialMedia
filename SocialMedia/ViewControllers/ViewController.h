@@ -16,5 +16,5 @@
 }
 - (IBAction)connectFaceBook:(id)sender;
 - (IBAction)connectTwitter:(id)sender;
-
+- (IBAction)twitterFollowesActionMethod:(id)sender;
 @end

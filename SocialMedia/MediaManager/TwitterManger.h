@@ -10,10 +10,16 @@
 
 @interface TwitterManger : NSObject
 {
+    NSOperationQueue *operationQueueStatus;
+    NSMutableArray *twitterFriendsListArray;
 }
+
+@property(nonatomic,retain) NSMutableArray *twitterFriendsListArray;
 
 + (TwitterManger *)shareTwitterSingleton;
 
 - (void)TweetwithImage:(UIImage *)attachYourImage message:(NSString *)addMessage viewController:(UIViewController *)viewController;
+
+- (void)getTwitterFriendsList;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TwitterManger.h"
+#import "TwitterInfo.h"
 
 @implementation ViewController
 
@@ -71,6 +72,12 @@
 - (IBAction)connectTwitter:(id)sender
 {
     [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" viewController:self];
+}
+
+- (IBAction)twitterFollowesActionMethod:(id)sender
+{
+    [sharedTwitterSingleton getTwitterFriendsList];
+    
 }
 
 @end
