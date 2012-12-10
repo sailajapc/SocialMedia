@@ -15,6 +15,7 @@
 		8A9DBAF216720FB600547629 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF116720FB600547629 /* AppDelegate.m */; };
 		8A9DBAF516720FB600547629 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF416720FB600547629 /* ViewController.m */; };
 		8A9DBAF816720FB600547629 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF616720FB600547629 /* ViewController.xib */; };
+		CDA55E821675C20800462836 /* Utilites.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E811675C20800462836 /* Utilites.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		8A9DBAF316720FB600547629 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8A9DBAF416720FB600547629 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8A9DBAF716720FB600547629 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		CDA55E801675C20800462836 /* Utilites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilites.h; path = External/Utilites/Utilites.h; sourceTree = "<group>"; };
+		CDA55E811675C20800462836 /* Utilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilites.m; path = External/Utilites/Utilites.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +53,7 @@
 		8A9DBAD216720FB500547629 = {
 			isa = PBXGroup;
 			children = (
+				CDA55E7D1675C1B700462836 /* External */,
 				8A9DBAE716720FB600547629 /* SocialMedia */,
 				8A9DBAE016720FB600547629 /* Frameworks */,
 				8A9DBADE16720FB600547629 /* Products */,
@@ -96,6 +100,23 @@
 				8A9DBAEF16720FB600547629 /* SocialMedia-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDA55E7D1675C1B700462836 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				CDA55E7F1675C1DD00462836 /* Utilites */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		CDA55E7F1675C1DD00462836 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				CDA55E801675C20800462836 /* Utilites.h */,
+				CDA55E811675C20800462836 /* Utilites.m */,
+			);
+			name = Utilites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +184,7 @@
 				8A9DBAEE16720FB600547629 /* main.m in Sources */,
 				8A9DBAF216720FB600547629 /* AppDelegate.m in Sources */,
 				8A9DBAF516720FB600547629 /* ViewController.m in Sources */,
+				CDA55E821675C20800462836 /* Utilites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +294,7 @@
 				8A9DBAFD16720FB600547629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

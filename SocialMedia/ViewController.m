@@ -57,6 +57,9 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+#pragma mark -
+#pragma mark IBAction methods
+
 - (IBAction)connectFaceBook:(id)sender
 {
     //Need to implement
