@@ -87,12 +87,12 @@ static TwitterManger *shareTwitterSingleton;
     
     if([TWTweetComposeViewController canSendTweet])
     {
-        // Check for image 
+        // Check for tweet with image 
         if (attachYourImage != nil)
         {
             [twitter addImage:attachYourImage];
         }
-        // Check for tweet
+        // Check for tweet meassage
         if (addMessage != nil)
         {
             [twitter setInitialText:addMessage];

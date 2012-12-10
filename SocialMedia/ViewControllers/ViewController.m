@@ -70,8 +70,6 @@
 
 - (IBAction)connectTwitter:(id)sender
 {
-    //Need to implement
-    
     [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" viewController:self];
 }
 

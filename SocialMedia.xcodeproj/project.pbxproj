@@ -19,6 +19,8 @@
 		CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8B1675C77300462836 /* Accounts.framework */; };
 		CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8E1675C78200462836 /* Twitter.framework */; };
 		CDA55E9F1675D44700462836 /* TwitterManger.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E9E1675D44700462836 /* TwitterManger.m */; };
+		CDA55EA61675EB4E00462836 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55EA51675EB4E00462836 /* Reachability.m */; };
+		CDA55EAD1675EC7500462836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55EA71675EBB600462836 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,9 @@
 		CDA55E8E1675C78200462836 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		CDA55E9D1675D44700462836 /* TwitterManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterManger.h; path = MediaManager/TwitterManger.h; sourceTree = "<group>"; };
 		CDA55E9E1675D44700462836 /* TwitterManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterManger.m; path = MediaManager/TwitterManger.m; sourceTree = "<group>"; };
+		CDA55EA41675EB4E00462836 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CDA55EA51675EB4E00462836 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CDA55EA71675EBB600462836 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA55EAD1675EC7500462836 /* SystemConfiguration.framework in Frameworks */,
 				CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */,
 				CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */,
 				8A9DBAE216720FB600547629 /* UIKit.framework in Frameworks */,
@@ -62,7 +68,7 @@
 		8A9DBAD216720FB500547629 = {
 			isa = PBXGroup;
 			children = (
-				CDA55E7D1675C1B700462836 /* External */,
+				CDA55EA21675EB2E00462836 /* External */,
 				8A9DBAE716720FB600547629 /* SocialMedia */,
 				8A9DBAE016720FB600547629 /* Frameworks */,
 				8A9DBADE16720FB600547629 /* Products */,
@@ -80,6 +86,7 @@
 		8A9DBAE016720FB600547629 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDA55EA71675EBB600462836 /* SystemConfiguration.framework */,
 				CDA55E8E1675C78200462836 /* Twitter.framework */,
 				CDA55E8B1675C77300462836 /* Accounts.framework */,
 				8A9DBAE116720FB600547629 /* UIKit.framework */,
@@ -114,13 +121,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CDA55E7D1675C1B700462836 /* External */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
 		CDA55E7F1675C1DD00462836 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +147,23 @@
 				8A9DBAF416720FB600547629 /* ViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CDA55EA21675EB2E00462836 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				CDA55EA31675EB4E00462836 /* Rechability */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		CDA55EA31675EB4E00462836 /* Rechability */ = {
+			isa = PBXGroup;
+			children = (
+				CDA55EA41675EB4E00462836 /* Reachability.h */,
+				CDA55EA51675EB4E00462836 /* Reachability.m */,
+			);
+			path = Rechability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +233,7 @@
 				8A9DBAF516720FB600547629 /* ViewController.m in Sources */,
 				CDA55E821675C20800462836 /* Utilites.m in Sources */,
 				CDA55E9F1675D44700462836 /* TwitterManger.m in Sources */,
+				CDA55EA61675EB4E00462836 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
