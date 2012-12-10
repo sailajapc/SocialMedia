@@ -18,6 +18,7 @@
 		CDA55E821675C20800462836 /* Utilites.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E811675C20800462836 /* Utilites.m */; };
 		CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8B1675C77300462836 /* Accounts.framework */; };
 		CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8E1675C78200462836 /* Twitter.framework */; };
+		CDA55E9F1675D44700462836 /* TwitterManger.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E9E1675D44700462836 /* TwitterManger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		CDA55E811675C20800462836 /* Utilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilites.m; path = SocialMedia/Utilites/Utilites.m; sourceTree = "<group>"; };
 		CDA55E8B1675C77300462836 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		CDA55E8E1675C78200462836 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		CDA55E9D1675D44700462836 /* TwitterManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterManger.h; path = MediaManager/TwitterManger.h; sourceTree = "<group>"; };
+		CDA55E9E1675D44700462836 /* TwitterManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterManger.m; path = MediaManager/TwitterManger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 		CDA55E921675D04B00462836 /* MediaManager */ = {
 			isa = PBXGroup;
 			children = (
+				CDA55E9D1675D44700462836 /* TwitterManger.h */,
+				CDA55E9E1675D44700462836 /* TwitterManger.m */,
 			);
 			name = MediaManager;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				8A9DBAF216720FB600547629 /* AppDelegate.m in Sources */,
 				8A9DBAF516720FB600547629 /* ViewController.m in Sources */,
 				CDA55E821675C20800462836 /* Utilites.m in Sources */,
+				CDA55E9F1675D44700462836 /* TwitterManger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
