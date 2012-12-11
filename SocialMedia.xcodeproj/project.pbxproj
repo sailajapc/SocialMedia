@@ -22,6 +22,7 @@
 		CDA55EAD1675EC7500462836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55EA71675EBB600462836 /* SystemConfiguration.framework */; };
 		CDA55EB11675F1C800462836 /* TwitterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55EB01675F1C800462836 /* TwitterInfo.m */; };
 		CDA55EBF1675F60900462836 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA55EBE1675F60900462836 /* ViewController.xib */; };
+		CDC0628B1676F754000CF523 /* TwitterFriendsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0628A1676F754000CF523 /* TwitterFriendsTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		CDA55EAF1675F1C800462836 /* TwitterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterInfo.h; path = Objects/TwitterInfo.h; sourceTree = "<group>"; };
 		CDA55EB01675F1C800462836 /* TwitterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterInfo.m; path = Objects/TwitterInfo.m; sourceTree = "<group>"; };
 		CDA55EBE1675F60900462836 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ViewControllers/ViewController.xib; sourceTree = "<group>"; };
+		CDC062891676F754000CF523 /* TwitterFriendsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterFriendsTableView.h; path = ViewControllers/TwitterFriendsTableView.h; sourceTree = "<group>"; };
+		CDC0628A1676F754000CF523 /* TwitterFriendsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterFriendsTableView.m; path = ViewControllers/TwitterFriendsTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				8A9DBAF316720FB600547629 /* ViewController.h */,
 				8A9DBAF416720FB600547629 /* ViewController.m */,
 				CDA55EBE1675F60900462836 /* ViewController.xib */,
+				CDC062891676F754000CF523 /* TwitterFriendsTableView.h */,
+				CDC0628A1676F754000CF523 /* TwitterFriendsTableView.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				CDA55E9F1675D44700462836 /* TwitterManger.m in Sources */,
 				CDA55EA61675EB4E00462836 /* Reachability.m in Sources */,
 				CDA55EB11675F1C800462836 /* TwitterInfo.m in Sources */,
+				CDC0628B1676F754000CF523 /* TwitterFriendsTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

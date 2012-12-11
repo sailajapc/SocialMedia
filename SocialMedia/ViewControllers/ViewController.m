@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TwitterManger.h"
 #import "TwitterInfo.h"
+#import "TwitterFriendsTableView.h"
 
 @implementation ViewController
 
@@ -77,6 +78,10 @@
 - (IBAction)twitterFollowesActionMethod:(id)sender
 {
     [sharedTwitterSingleton getTwitterFriendsList];
+    
+    TwitterFriendsTableView *tableViewController = [[TwitterFriendsTableView alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:tableViewController animated:YES];
+    [tableViewController release];
     
 }
 
