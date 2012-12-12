@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A22327E16785EC100FB2D2D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A22327D16785EC100FB2D2D /* FacebookSDK.framework */; };
 		8A9DBAE216720FB600547629 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9DBAE116720FB600547629 /* UIKit.framework */; };
 		8A9DBAE416720FB600547629 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9DBAE316720FB600547629 /* Foundation.framework */; };
 		8A9DBAE616720FB600547629 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9DBAE516720FB600547629 /* CoreGraphics.framework */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A22327D16785EC100FB2D2D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		8A9DBADD16720FB600547629 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9DBAE116720FB600547629 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A9DBAE316720FB600547629 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,6 +67,7 @@
 				8A9DBAE216720FB600547629 /* UIKit.framework in Frameworks */,
 				8A9DBAE416720FB600547629 /* Foundation.framework in Frameworks */,
 				8A9DBAE616720FB600547629 /* CoreGraphics.framework in Frameworks */,
+				8A22327E16785EC100FB2D2D /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA55EA71675EBB600462836 /* SystemConfiguration.framework */,
+				8A22327D16785EC100FB2D2D /* FacebookSDK.framework */,
 				CDA55E8E1675C78200462836 /* Twitter.framework */,
 				CDA55E8B1675C77300462836 /* Accounts.framework */,
 				8A9DBAE116720FB600547629 /* UIKit.framework */,
@@ -317,9 +321,14 @@
 		8A9DBAFC16720FB600547629 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialMedia/SocialMedia-Prefix.pch";
 				INFOPLIST_FILE = "SocialMedia/SocialMedia-Info.plist";
+				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -328,9 +337,14 @@
 		8A9DBAFD16720FB600547629 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialMedia/SocialMedia-Prefix.pch";
 				INFOPLIST_FILE = "SocialMedia/SocialMedia-Info.plist";
+				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
