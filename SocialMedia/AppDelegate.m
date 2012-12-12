@@ -14,7 +14,7 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
-
+@synthesize fbSession;
 - (void)dealloc
 {
     [_window release];
@@ -71,4 +71,8 @@
      */
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+   return [self.fbSession handleOpenURL:url];
+}
 @end

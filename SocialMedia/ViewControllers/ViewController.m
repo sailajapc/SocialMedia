@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @implementation ViewController
 
@@ -21,6 +22,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (!appDelegate.fbSession.isOpen) {
+        //Create a new FB session
+        appDelegate.fbSession = [[FBSession alloc] init];
+        
+        //Check the token is cached
+        if (appDelegate.fbSession.state == FBSessionStateCreatedTokenLoaded) {
+            // To make the session usable we call login again
+            [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, 
+                                                             FBSessionState status, 
+                                                             NSError *error) {
+            }];
+        }
+
+    }
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -62,7 +78,22 @@
 
 - (IBAction)connectFaceBook:(id)sender
 {
-    //Need to implement
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (appDelegate.fbSession.isOpen) {
+        [appDelegate.fbSession closeAndClearTokenInformation];
+    }
+    else {
+        if (appDelegate.fbSession.state != FBSessionStateCreated) {
+        //Create a new FB session
+        appDelegate.fbSession = [[FBSession alloc] init];
+        }
+    // Open a session & show the FB login
+    [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, 
+                                                               FBSessionState status, 
+                                                               NSError *error) {
+            }];
+    }
+
 }
 
 - (IBAction)connectTwitter:(id)sender
