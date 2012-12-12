@@ -14,12 +14,9 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
-<<<<<<< HEAD
 @synthesize fbSession;
-=======
 @synthesize navigationContoller;
 
->>>>>>> bbee87d60e1965a917f0a32685a19a1a693e7929
 - (void)dealloc
 {
     [_window release];

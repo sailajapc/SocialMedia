@@ -7,13 +7,10 @@
 //
 
 #import "ViewController.h"
-<<<<<<< HEAD
 #import "AppDelegate.h"
-=======
 #import "TwitterManger.h"
 #import "TwitterInfo.h"
 #import "TwitterFriendsTableView.h"
->>>>>>> bbee87d60e1965a917f0a32685a19a1a693e7929
 
 @implementation ViewController
 
