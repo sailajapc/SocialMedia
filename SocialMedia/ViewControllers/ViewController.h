@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class TwitterManger;
 @interface ViewController : UIViewController
-
+{
+    TwitterManger *sharedTwitterSingleton;
+    
+}
 - (IBAction)connectFaceBook:(id)sender;
 - (IBAction)connectTwitter:(id)sender;
-
+- (IBAction)twitterFollowesActionMethod:(id)sender;
 @end

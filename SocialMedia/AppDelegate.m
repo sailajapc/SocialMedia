@@ -14,11 +14,17 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+<<<<<<< HEAD
 @synthesize fbSession;
+=======
+@synthesize navigationContoller;
+
+>>>>>>> bbee87d60e1965a917f0a32685a19a1a693e7929
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
+    [navigationContoller release];
     [super dealloc];
 }
 
@@ -27,7 +33,8 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    navigationContoller = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.window.rootViewController = navigationContoller;
     [self.window makeKeyAndVisible];
     return YES;
 }

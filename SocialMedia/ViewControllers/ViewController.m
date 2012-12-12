@@ -7,7 +7,13 @@
 //
 
 #import "ViewController.h"
+<<<<<<< HEAD
 #import "AppDelegate.h"
+=======
+#import "TwitterManger.h"
+#import "TwitterInfo.h"
+#import "TwitterFriendsTableView.h"
+>>>>>>> bbee87d60e1965a917f0a32685a19a1a693e7929
 
 @implementation ViewController
 
@@ -21,6 +27,8 @@
 
 - (void)viewDidLoad
 {
+    sharedTwitterSingleton = [TwitterManger shareTwitterSingleton];
+
     [super viewDidLoad];
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     if (!appDelegate.fbSession.isOpen) {
@@ -98,7 +106,17 @@
 
 - (IBAction)connectTwitter:(id)sender
 {
-    //Need to implement
+    [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" viewController:self];
+}
+
+- (IBAction)twitterFollowesActionMethod:(id)sender
+{
+    [sharedTwitterSingleton getTwitterFriendsList];
+    
+    TwitterFriendsTableView *tableViewController = [[TwitterFriendsTableView alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:tableViewController animated:YES];
+    [tableViewController release];
+    
 }
 
 @end
