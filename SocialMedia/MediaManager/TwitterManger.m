@@ -98,7 +98,7 @@ static TwitterManger *shareTwitterSingleton;
 #pragma mark -
 #pragma mark twitter Helper Class method
 
-- (void)TweetwithImage:(UIImage *)attachYourImage message:(NSString *)addMessage viewController:(UIViewController *)viewController
+- (void)TweetwithImage:(UIImage *)attachYourImage message:(NSString *)addMessage url:(NSURL *)addUrl viewController:(UIViewController *)viewController
 {
     NetworkStatus netStatus = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
     if (netStatus == NotReachable)
@@ -111,6 +111,12 @@ static TwitterManger *shareTwitterSingleton;
         
         if([TWTweetComposeViewController canSendTweet])
         {
+            // Check for url
+            if (addUrl != nil)
+            {
+                [twitter addURL:addUrl];
+            }
+            
             // Check for tweet with image
             if (attachYourImage != nil)
             {

@@ -72,7 +72,7 @@
 
 - (IBAction)connectTwitter:(id)sender
 {
-    [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" viewController:self];
+    [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" url:nil viewController:self];
 }
 
 - (IBAction)twitterFollowesActionMethod:(id)sender

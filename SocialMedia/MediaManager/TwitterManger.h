@@ -18,7 +18,7 @@
 
 + (TwitterManger *)shareTwitterSingleton;
 
-- (void)TweetwithImage:(UIImage *)attachYourImage message:(NSString *)addMessage viewController:(UIViewController *)viewController;
+- (void)TweetwithImage:(UIImage *)attachYourImage message:(NSString *)addMessage url:(NSURL *)addUrl viewController:(UIViewController *)viewController;
 
 - (void)getTwitterFriendsList;
 
