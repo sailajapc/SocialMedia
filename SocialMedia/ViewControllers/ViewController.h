@@ -12,9 +12,11 @@
 @interface ViewController : UIViewController
 {
     TwitterManger *sharedTwitterSingleton;
-    
+    IBOutlet UIButton *connectFB;
+    IBOutlet UIButton *postToWall;
 }
 - (IBAction)connectFaceBook:(id)sender;
+- (IBAction)postOnFBWall:(id)sender;
 - (IBAction)connectTwitter:(id)sender;
 - (IBAction)twitterFollowesActionMethod:(id)sender;
 @end
