@@ -98,6 +98,8 @@
 			children = (
 				CDA55EA71675EBB600462836 /* SystemConfiguration.framework */,
 				8A22327D16785EC100FB2D2D /* FacebookSDK.framework */,
+				8A22327D16785EC100FB2D2D /* FacebookSDK.framework */,
+				CDA55EA71675EBB600462836 /* SystemConfiguration.framework */,
 				CDA55E8E1675C78200462836 /* Twitter.framework */,
 				CDA55E8B1675C77300462836 /* Accounts.framework */,
 				8A9DBAE116720FB600547629 /* UIKit.framework */,

@@ -16,6 +16,7 @@
 @synthesize viewController = _viewController;
 @synthesize navigationContoller;
 @synthesize fbSession;
+
 - (void)dealloc
 {
     [_window release];
@@ -72,10 +73,11 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+   [FBSession.activeSession close];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-   return [self.fbSession handleOpenURL:url];
+   return [FBSession.activeSession handleOpenURL:url];
 }
 @end

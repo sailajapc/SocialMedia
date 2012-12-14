@@ -6,12 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AppDelegate.h"
 #import "TwitterManger.h"
 #import "TwitterInfo.h"
 #import "TwitterFriendsTableView.h"
-#import "AppDelegate.h"
+#import "Utilites.h"
 
+@interface ViewController()
+
+- (void)setButton;
+- (void)postFeed;
+@end
 
 @implementation ViewController
 
@@ -26,19 +31,18 @@
 - (void)viewDidLoad
 {
     sharedTwitterSingleton = [TwitterManger shareTwitterSingleton];
-
+    [self setButton];
     [super viewDidLoad];
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    if (!appDelegate.fbSession.isOpen) {
-        //Create a new FB session
-        appDelegate.fbSession = [[FBSession alloc] init];
-        
+    
+    if (FBSession.activeSession.isOpen) {
+        [self setButton];
+    }
+    else{        
         //Check the token is cached
-        if (appDelegate.fbSession.state == FBSessionStateCreatedTokenLoaded) {
+        if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
             // To make the session usable we call login again
-            [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, 
-                                                             FBSessionState status, 
-                                                             NSError *error) {
+            [FBSession openActiveSessionWithPermissions:[NSArray arrayWithObject:@"publish_actions"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                [self setButton];
             }];
         }
 
@@ -80,28 +84,77 @@
 }
 
 #pragma mark -
+#pragma mark Facebook methods
+
+- (void)setButton{
+   
+    if (FBSession.activeSession.isOpen) {
+        [connectFB setHidden:YES];
+        [postToWall setHidden:NO];
+    }
+    else
+    {
+        [connectFB setHidden:NO];
+        [postToWall setHidden:YES];  
+    }
+}
+
+- (void)postFeed{
+    NSDictionary *postParams = [[NSDictionary alloc]initWithObjectsAndKeys:@"Posting through Social Media App",@"message",nil];
+    [ FBRequestConnection startWithGraphPath:@"me/feed" parameters:postParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSString *alertText;
+        if (error) {
+            alertText = [error description];
+        }
+        else{
+            alertText = @"Successfully posted"; 
+        }
+        [Utilites showAlertWithTitle:@"Alert" message:alertText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    } ];
+ 
+}
+
+#pragma mark -
 #pragma mark IBAction methods
 
 - (IBAction)connectFaceBook:(id)sender
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    if (appDelegate.fbSession.isOpen) {
-        [appDelegate.fbSession closeAndClearTokenInformation];
+    
+    if (FBSession.activeSession.isOpen) {
+        [FBSession.activeSession closeAndClearTokenInformation];
     }
     else {
-        if (appDelegate.fbSession.state != FBSessionStateCreated) {
-        //Create a new FB session
-        appDelegate.fbSession = [[FBSession alloc] init];
-        }
-    // Open a session & show the FB login
-    [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, 
-                                                               FBSessionState status, 
-                                                               NSError *error) {
-            }];
+        // Open a session & show the FB login
+        [FBSession openActiveSessionWithPermissions:[NSArray arrayWithObject:@"publish_actions"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            [self setButton];
+        }];
+//    [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, 
+//                                                               FBSessionState status, 
+//                                                               NSError *error) {
+//               [self setButton];
+//            }];
     }
 
 }
 
+- (IBAction)postOnFBWall:(id)sender{
+    
+    // Ask for publish_actions permissions in context
+    if ([FBSession.activeSession.permissions
+         indexOfObject:@"publish_actions"] == NSNotFound) {
+        // No permissions found in session, ask for it
+        [FBSession.activeSession reauthorizeWithPermissions:[NSArray arrayWithObject:@"publish_actions"] behavior:FBSessionLoginBehaviorWithFallbackToWebView completionHandler:^(FBSession *session, NSError *error) {
+            if (!error) {
+                [self postFeed];
+            }
+        } ];
+    }
+         else {
+        // If permissions present, publish the story
+        [self postFeed];
+    }
+}
+         
 - (IBAction)connectTwitter:(id)sender
 {
     [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" url:nil viewController:self];

@@ -21,6 +21,4 @@
 
 @property (strong, nonatomic) ViewController *viewController;
 
-@property (strong, nonatomic) FBSession *fbSession;
-
 @end
