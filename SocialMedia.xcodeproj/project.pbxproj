@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A22327E16785EC100FB2D2D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A22327D16785EC100FB2D2D /* FacebookSDK.framework */; };
+		8A3612D8167B019D00A6702D /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3612D7167B019C00A6702D /* FacebookManager.m */; };
 		8A9DBAE216720FB600547629 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9DBAE116720FB600547629 /* UIKit.framework */; };
 		8A9DBAE416720FB600547629 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9DBAE316720FB600547629 /* Foundation.framework */; };
 		8A9DBAE616720FB600547629 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9DBAE516720FB600547629 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		8A22327D16785EC100FB2D2D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		8A3612D6167B019C00A6702D /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookManager.h; path = MediaManager/FacebookManager.h; sourceTree = "<group>"; };
+		8A3612D7167B019C00A6702D /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookManager.m; path = MediaManager/FacebookManager.m; sourceTree = "<group>"; };
 		8A9DBADD16720FB600547629 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9DBAE116720FB600547629 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A9DBAE316720FB600547629 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,6 +151,8 @@
 			children = (
 				CDA55E9D1675D44700462836 /* TwitterManger.h */,
 				CDA55E9E1675D44700462836 /* TwitterManger.m */,
+				8A3612D6167B019C00A6702D /* FacebookManager.h */,
+				8A3612D7167B019C00A6702D /* FacebookManager.m */,
 			);
 			name = MediaManager;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				CDA55EA61675EB4E00462836 /* Reachability.m in Sources */,
 				CDA55EB11675F1C800462836 /* TwitterInfo.m in Sources */,
 				CDC0628B1676F754000CF523 /* TwitterFriendsTableView.m in Sources */,
+				8A3612D8167B019D00A6702D /* FacebookManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
