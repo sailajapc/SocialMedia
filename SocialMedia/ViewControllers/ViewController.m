@@ -11,6 +11,7 @@
 #import "TwitterInfo.h"
 #import "TwitterFriendsTableView.h"
 #import "Utilites.h"
+#import "ViewController.h"
 
 @interface ViewController()
 
