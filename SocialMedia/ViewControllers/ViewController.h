@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class TwitterManger;
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <FBFriendPickerDelegate>
 {
     TwitterManger *sharedTwitterSingleton;
     IBOutlet UIButton *connectFB;
-    IBOutlet UIButton *postToWall;
 }
+@property (nonatomic,retain)FBFriendPickerViewController *friendsView;
+
 - (IBAction)connectFaceBook:(id)sender;
 - (IBAction)postOnFBWall:(id)sender;
+- (IBAction)loadFacebookFriends:(id)sender;
 - (IBAction)connectTwitter:(id)sender;
 - (IBAction)twitterFollowesActionMethod:(id)sender;
 @end

@@ -96,7 +96,8 @@ static FacebookManager *shareFacebookSingleton;
     }
 }
 
-- (void)postFeedOnFBWall{
+- (void)postFeedOnFBWall
+{
     // Ask for publish_actions permissions in context
     if ([FBSession.activeSession.permissions
          indexOfObject:@"publish_actions"] == NSNotFound) {

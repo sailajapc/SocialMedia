@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface FacebookManager : NSObject
+@interface FacebookManager : NSObject<FBFriendPickerDelegate>
 
 + (FacebookManager *)shareFacebookSingleton;
 - (void)getFacebookLogin;

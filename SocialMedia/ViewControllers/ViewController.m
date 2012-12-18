@@ -18,6 +18,7 @@
 @end
 
 @implementation ViewController
+@synthesize friendsView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -38,8 +39,22 @@
     else
     {
          if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+             //Make the session Usable
              [FBSession.activeSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                 [connectFB setHidden:YES];
+                 switch (status) {
+                     case FBSessionStateClosedLoginFailed:
+                     {
+                         [Utilites showAlertWithTitle:@"Alert" message:@"An Error while trying to login" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                     }
+                         break;
+                    case FBSessionStateOpen:
+                     {
+                         [connectFB setHidden:YES];
+                     }
+                         break;
+                     default:
+                         break;
+                 }
              }];
          }
     }
@@ -49,6 +64,7 @@
 
 - (void)viewDidUnload
 {
+    friendsView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -94,7 +110,17 @@
 {
     [[FacebookManager shareFacebookSingleton]postFeedOnFBWall]; 
 }
-         
+ 
+- (IBAction)loadFacebookFriends:(id)sender{
+    if (friendsView == nil) {
+    friendsView = [[FBFriendPickerViewController alloc]init];
+    [friendsView setDelegate:self];
+    [friendsView setTitle:@"My Friends" ];
+    }
+    [friendsView loadData];
+    [friendsView clearSelection];
+    [self presentModalViewController:friendsView animated:YES];
+}
 - (IBAction)connectTwitter:(id)sender
 {
     [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" url:nil viewController:self];
@@ -110,4 +136,21 @@
     
 }
 
+#pragma mark -
+#pragma mark Friends Picker Delegate methods
+
+- (void)facebookViewControllerDoneWasPressed:(id)sender{
+    NSMutableArray *ids = [[NSMutableArray alloc]init];
+    NSMutableArray *names = [[NSMutableArray alloc]init];
+    for (id<FBGraphUser> user in self.friendsView.selection) {
+        [ids addObject:user.id];
+        [names addObject:user.name];
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)facebookViewControllerCancelWasPressed:(id)sender{
+    [friendsView clearSelection];
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end
