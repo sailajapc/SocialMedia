@@ -12,11 +12,9 @@
 #import "TwitterFriendsTableView.h"
 #import "Utilites.h"
 #import "ViewController.h"
-
+#import "FacebookManager.h"
 @interface ViewController()
 
-- (void)setButton;
-- (void)postFeed;
 @end
 
 @implementation ViewController
@@ -31,24 +29,22 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"Social Media";
     sharedTwitterSingleton = [TwitterManger shareTwitterSingleton];
-    [self setButton];
-    [super viewDidLoad];
-    
-    if (FBSession.activeSession.isOpen) {
-        [self setButton];
+    if (FBSession.activeSession.isOpen) 
+    {
+        [connectFB setHidden:YES];
     }
-    else{        
-        //Check the token is cached
-        if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-            // To make the session usable we call login again
-            [FBSession openActiveSessionWithPermissions:[NSArray arrayWithObject:@"publish_actions"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                [self setButton];
-            }];
-        }
+    else
+    {
+         if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+             [FBSession.activeSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                 [connectFB setHidden:YES];
+             }];
+         }
+    }
 
-    }
-	// Do any additional setup after loading the view, typically from a nib.
+    [super viewDidLoad];
 }
 
 - (void)viewDidUnload
@@ -84,76 +80,19 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-#pragma mark -
-#pragma mark Facebook methods
-
-- (void)setButton{
-   
-    if (FBSession.activeSession.isOpen) {
-        [connectFB setHidden:YES];
-        [postToWall setHidden:NO];
-    }
-    else
-    {
-        [connectFB setHidden:NO];
-        [postToWall setHidden:YES];  
-    }
-}
-
-- (void)postFeed{
-    NSDictionary *postParams = [[NSDictionary alloc]initWithObjectsAndKeys:@"Posting through Social Media App",@"message",nil];
-    [ FBRequestConnection startWithGraphPath:@"me/feed" parameters:postParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        NSString *alertText;
-        if (error) {
-            alertText = [error description];
-        }
-        else{
-            alertText = @"Successfully posted"; 
-        }
-        [Utilites showAlertWithTitle:@"Alert" message:alertText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    } ];
- 
-}
 
 #pragma mark -
 #pragma mark IBAction methods
 
 - (IBAction)connectFaceBook:(id)sender
 {
-    
-    if (FBSession.activeSession.isOpen) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    else {
-        // Open a session & show the FB login
-        [FBSession openActiveSessionWithPermissions:[NSArray arrayWithObject:@"publish_actions"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-            [self setButton];
-        }];
-//    [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, 
-//                                                               FBSessionState status, 
-//                                                               NSError *error) {
-//               [self setButton];
-//            }];
-    }
-
+   [[FacebookManager shareFacebookSingleton]getFacebookLogin];
+    [connectFB setHidden:YES];
 }
 
-- (IBAction)postOnFBWall:(id)sender{
-    
-    // Ask for publish_actions permissions in context
-    if ([FBSession.activeSession.permissions
-         indexOfObject:@"publish_actions"] == NSNotFound) {
-        // No permissions found in session, ask for it
-        [FBSession.activeSession reauthorizeWithPermissions:[NSArray arrayWithObject:@"publish_actions"] behavior:FBSessionLoginBehaviorWithFallbackToWebView completionHandler:^(FBSession *session, NSError *error) {
-            if (!error) {
-                [self postFeed];
-            }
-        } ];
-    }
-         else {
-        // If permissions present, publish the story
-        [self postFeed];
-    }
+- (IBAction)postOnFBWall:(id)sender
+{
+    [[FacebookManager shareFacebookSingleton]postFeedOnFBWall]; 
 }
          
 - (IBAction)connectTwitter:(id)sender

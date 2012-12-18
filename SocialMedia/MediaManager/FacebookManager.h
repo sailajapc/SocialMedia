@@ -11,5 +11,7 @@
 @interface FacebookManager : NSObject
 
 + (FacebookManager *)shareFacebookSingleton;
-- (BOOL)getFacebookLogin;
+- (void)getFacebookLogin;
+- (void)postFeedOnFBWall;
+- (void)postFeed;
 @end

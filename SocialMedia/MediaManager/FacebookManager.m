@@ -78,29 +78,55 @@ static FacebookManager *shareFacebookSingleton;
 
 #pragma mark -
 #pragma mark  Facebook helper Class methods
-- (BOOL)getFacebookLogin
+- (void)getFacebookLogin
 {
     NetworkStatus netStatus = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
     if (netStatus == NotReachable)
     {
         [Utilites showAlertWithTitle:@"Network Unavailable" message:@"This application requires an active Internet connection, but no connection is available. Please check your connectivity settings and signal." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        return NO;
     }
     else
     {
-    if (FBSession.activeSession.isOpen) {
-        return YES; 
-    }
-    else{        
-        //Check the token is cached
-        if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-            // To make the session usable we call login again
-            [FBSession openActiveSessionWithPermissions:[NSArray arrayWithObject:@"publish_actions"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+    if (!FBSession.activeSession.isOpen) 
+    {
+        //Create new FBSession with permissions
+        [FBSession openActiveSessionWithPermissions:[NSArray arrayWithObject:@"publish_actions"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
             }];
-            
-        }
-        return YES;
     }
     }
 }
+
+- (void)postFeedOnFBWall{
+    // Ask for publish_actions permissions in context
+    if ([FBSession.activeSession.permissions
+         indexOfObject:@"publish_actions"] == NSNotFound) {
+        // No permissions found in session, ask for it
+        [FBSession.activeSession reauthorizeWithPermissions:[NSArray arrayWithObject:@"publish_actions"] behavior:FBSessionLoginBehaviorWithFallbackToWebView completionHandler:^(FBSession *session, NSError *error) {
+            if (!error) {
+                [self postFeed];
+            }
+        } ];
+    }
+    else {
+        // If permissions present, publish the story
+        [self postFeed];
+    }
+
+}
+
+- (void)postFeed{
+    NSDictionary *postParams = [[NSDictionary alloc]initWithObjectsAndKeys:@"Posting through Social Media App",@"message",nil];
+    [ FBRequestConnection startWithGraphPath:@"me/feed" parameters:postParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSString *alertText;
+        if (error) {
+            alertText = [error description];
+        }
+        else{
+            alertText = @"Successfully posted"; 
+        }
+        [Utilites showAlertWithTitle:@"Alert" message:alertText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    } ];
+    
+}
+
 @end
