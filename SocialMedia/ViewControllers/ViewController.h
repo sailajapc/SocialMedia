@@ -19,6 +19,8 @@
 - (IBAction)connectFaceBook:(id)sender;
 - (IBAction)postOnFBWall:(id)sender;
 - (IBAction)loadFacebookFriends:(id)sender;
-- (IBAction)connectTwitter:(id)sender;
+- (IBAction)normalTweetButtonAction:(id)sender;
+- (IBAction)tweetWithImageButtonAction:(id)sender;
+- (IBAction)tweetWithURLButtonAction:(id)sender;
 - (IBAction)twitterFollowesActionMethod:(id)sender;
 @end

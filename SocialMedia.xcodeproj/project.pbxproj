@@ -16,6 +16,7 @@
 		8A9DBAEE16720FB600547629 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAED16720FB600547629 /* main.m */; };
 		8A9DBAF216720FB600547629 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF116720FB600547629 /* AppDelegate.m */; };
 		8A9DBAF516720FB600547629 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF416720FB600547629 /* ViewController.m */; };
+		CD2F7D6C168B213300B116E0 /* Apple-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD2F7D6B168B213300B116E0 /* Apple-logo.jpg */; };
 		CDA55E821675C20800462836 /* Utilites.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E811675C20800462836 /* Utilites.m */; };
 		CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8B1675C77300462836 /* Accounts.framework */; };
 		CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8E1675C78200462836 /* Twitter.framework */; };
@@ -43,6 +44,7 @@
 		8A9DBAF116720FB600547629 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8A9DBAF316720FB600547629 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
 		8A9DBAF416720FB600547629 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
+		CD2F7D6B168B213300B116E0 /* Apple-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Apple-logo.jpg"; sourceTree = "<group>"; };
 		CDA55E801675C20800462836 /* Utilites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilites.h; sourceTree = "<group>"; };
 		CDA55E811675C20800462836 /* Utilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilites.m; sourceTree = "<group>"; };
 		CDA55E8B1675C77300462836 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -136,6 +138,7 @@
 		8A9DBAE816720FB600547629 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CD2F7D6B168B213300B116E0 /* Apple-logo.jpg */,
 				8A9DBAE916720FB600547629 /* SocialMedia-Info.plist */,
 				8A9DBAEA16720FB600547629 /* InfoPlist.strings */,
 				8A9DBAED16720FB600547629 /* main.m */,
@@ -254,6 +257,7 @@
 			files = (
 				8A9DBAEC16720FB600547629 /* InfoPlist.strings in Resources */,
 				CDA55EBF1675F60900462836 /* ViewController.xib in Resources */,
+				CD2F7D6C168B213300B116E0 /* Apple-logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
