@@ -121,9 +121,21 @@
     [friendsView clearSelection];
     [self presentModalViewController:friendsView animated:YES];
 }
-- (IBAction)connectTwitter:(id)sender
+- (IBAction)normalTweetButtonAction:(id)sender
 {
     [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" url:nil viewController:self];
+}
+
+
+- (IBAction)tweetWithImageButtonAction:(id)sender
+{
+    [sharedTwitterSingleton TweetwithImage:[UIImage imageNamed:@"Apple-logo.jpg"] message:@"Hello" url:nil viewController:self];
+}
+- (IBAction)tweetWithURLButtonAction:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"www.paradigmcreatives.com"];
+    [sharedTwitterSingleton TweetwithImage:nil message:@"Hello" url:url viewController:self];
+
 }
 
 - (IBAction)twitterFollowesActionMethod:(id)sender
