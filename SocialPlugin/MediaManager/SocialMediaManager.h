@@ -13,4 +13,8 @@
 
 + (SocialMediaManager *)shareSocialMediaManager;
 
+- (void)messageComposerForTwitter:(UIImage *)attachYourImage message:(NSString *)addMessage url:(NSURL *)addUrl viewController:(UIViewController *)viewController;
+
+- (void)messageComposerForFacebook:(UIImage *)attachYourImage message:(NSString *)addMessage url:(NSURL *)addUrl viewController:(UIViewController *)viewController;
+
 @end

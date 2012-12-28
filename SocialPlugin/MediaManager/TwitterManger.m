@@ -108,7 +108,7 @@ static TwitterManger *shareTwitterSingleton;
     else
     {
         TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-        
+
         if([TWTweetComposeViewController canSendTweet])
         {
             // Check for url
