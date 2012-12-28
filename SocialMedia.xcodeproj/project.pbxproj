@@ -25,6 +25,8 @@
 		CDA55EAD1675EC7500462836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55EA71675EBB600462836 /* SystemConfiguration.framework */; };
 		CDA55EB11675F1C800462836 /* TwitterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55EB01675F1C800462836 /* TwitterInfo.m */; };
 		CDA55EBF1675F60900462836 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA55EBE1675F60900462836 /* ViewController.xib */; };
+		CDAAF1F1168C308300760CFF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAAF1EE168C306C00760CFF /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CDAAF1F7168C6FAB00760CFF /* SocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAAF1F6168C6FAA00760CFF /* SocialMediaManager.m */; };
 		CDC0628B1676F754000CF523 /* TwitterFriendsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0628A1676F754000CF523 /* TwitterFriendsTableView.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,9 @@
 		CDA55EAF1675F1C800462836 /* TwitterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterInfo.h; path = SocialPlugin/Objects/TwitterInfo.h; sourceTree = "<group>"; };
 		CDA55EB01675F1C800462836 /* TwitterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterInfo.m; path = SocialPlugin/Objects/TwitterInfo.m; sourceTree = "<group>"; };
 		CDA55EBE1675F60900462836 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ViewControllers/ViewController.xib; sourceTree = "<group>"; };
+		CDAAF1EE168C306C00760CFF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		CDAAF1F5168C6FAA00760CFF /* SocialMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaManager.h; sourceTree = "<group>"; };
+		CDAAF1F6168C6FAA00760CFF /* SocialMediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaManager.m; sourceTree = "<group>"; };
 		CDC062891676F754000CF523 /* TwitterFriendsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterFriendsTableView.h; path = ViewControllers/TwitterFriendsTableView.h; sourceTree = "<group>"; };
 		CDC0628A1676F754000CF523 /* TwitterFriendsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterFriendsTableView.m; path = ViewControllers/TwitterFriendsTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDAAF1F1168C308300760CFF /* Social.framework in Frameworks */,
 				CDA55EAD1675EC7500462836 /* SystemConfiguration.framework in Frameworks */,
 				CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */,
 				CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */,
@@ -111,6 +117,7 @@
 		8A9DBAE016720FB600547629 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDAAF1EE168C306C00760CFF /* Social.framework */,
 				CDA55EA71675EBB600462836 /* SystemConfiguration.framework */,
 				8A22327D16785EC100FB2D2D /* FacebookSDK.framework */,
 				8A22327D16785EC100FB2D2D /* FacebookSDK.framework */,
@@ -163,6 +170,8 @@
 				CDA55E9E1675D44700462836 /* TwitterManger.m */,
 				8A3612D6167B019C00A6702D /* FacebookManager.h */,
 				8A3612D7167B019C00A6702D /* FacebookManager.m */,
+				CDAAF1F5168C6FAA00760CFF /* SocialMediaManager.h */,
+				CDAAF1F6168C6FAA00760CFF /* SocialMediaManager.m */,
 			);
 			path = MediaManager;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 				CDA55EB11675F1C800462836 /* TwitterInfo.m in Sources */,
 				CDC0628B1676F754000CF523 /* TwitterFriendsTableView.m in Sources */,
 				8A3612D8167B019D00A6702D /* FacebookManager.m in Sources */,
+				CDAAF1F7168C6FAB00760CFF /* SocialMediaManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
