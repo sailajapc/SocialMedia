@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/ACAccount.h>
 
 @class TwitterManger;
 @interface ViewController : UIViewController <FBFriendPickerDelegate>
 {
     TwitterManger *sharedTwitterSingleton;
     IBOutlet UIButton *connectFB;
+    NSDictionary *list;
 }
 @property (nonatomic,retain)FBFriendPickerViewController *friendsView;
 
@@ -33,5 +35,5 @@
 - (IBAction)normalMessageiOS6ButtonAction:(id)sender;
 - (IBAction)messageWithImageiOS6ButtonAction:(id)sender;
 - (IBAction)messageWithURLiOS6ButtonAction:(id)sender;
-
+- (IBAction)facebookFriendsList:(id)sender;
 @end

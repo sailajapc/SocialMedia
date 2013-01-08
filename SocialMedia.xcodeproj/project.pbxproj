@@ -17,6 +17,7 @@
 		8A9DBAF216720FB600547629 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF116720FB600547629 /* AppDelegate.m */; };
 		8A9DBAF516720FB600547629 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBAF416720FB600547629 /* ViewController.m */; };
 		CD2F7D6C168B213300B116E0 /* Apple-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD2F7D6B168B213300B116E0 /* Apple-logo.jpg */; };
+		CD68CE31169C4EDD000CFFA2 /* FacebookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD68CE30169C4EDD000CFFA2 /* FacebookInfo.m */; };
 		CDA55E821675C20800462836 /* Utilites.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA55E811675C20800462836 /* Utilites.m */; };
 		CDA55E901675C7AA00462836 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8B1675C77300462836 /* Accounts.framework */; };
 		CDA55E911675C7B200462836 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA55E8E1675C78200462836 /* Twitter.framework */; };
@@ -47,6 +48,8 @@
 		8A9DBAF316720FB600547629 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
 		8A9DBAF416720FB600547629 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
 		CD2F7D6B168B213300B116E0 /* Apple-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Apple-logo.jpg"; sourceTree = "<group>"; };
+		CD68CE2F169C4EDD000CFFA2 /* FacebookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInfo.h; sourceTree = "<group>"; };
+		CD68CE30169C4EDD000CFFA2 /* FacebookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookInfo.m; sourceTree = "<group>"; };
 		CDA55E801675C20800462836 /* Utilites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilites.h; sourceTree = "<group>"; };
 		CDA55E811675C20800462836 /* Utilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilites.m; sourceTree = "<group>"; };
 		CDA55E8B1675C77300462836 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -210,6 +213,8 @@
 			children = (
 				CDA55EAF1675F1C800462836 /* TwitterInfo.h */,
 				CDA55EB01675F1C800462836 /* TwitterInfo.m */,
+				CD68CE2F169C4EDD000CFFA2 /* FacebookInfo.h */,
+				CD68CE30169C4EDD000CFFA2 /* FacebookInfo.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				CDC0628B1676F754000CF523 /* TwitterFriendsTableView.m in Sources */,
 				8A3612D8167B019D00A6702D /* FacebookManager.m in Sources */,
 				CDAAF1F7168C6FAB00760CFF /* SocialMediaManager.m in Sources */,
+				CD68CE31169C4EDD000CFFA2 /* FacebookInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +363,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialMedia/SocialMedia-Prefix.pch";
 				INFOPLIST_FILE = "SocialMedia/SocialMedia-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -373,6 +380,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialMedia/SocialMedia-Prefix.pch";
 				INFOPLIST_FILE = "SocialMedia/SocialMedia-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

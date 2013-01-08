@@ -15,7 +15,6 @@
 #import "FacebookManager.h"
 #import "SocialMediaManager.h"
 
-
 @interface ViewController()
 
 @end
@@ -33,6 +32,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     self.title = @"Social Media";
     sharedTwitterSingleton = [TwitterManger shareTwitterSingleton];
     if (FBSession.activeSession.isOpen)
@@ -61,8 +62,6 @@
             }];
         }
     }
-    
-    [super viewDidLoad];
 }
 
 - (void)viewDidUnload
@@ -118,11 +117,23 @@
     if (friendsView == nil) {
         friendsView = [[FBFriendPickerViewController alloc]init];
         [friendsView setDelegate:self];
-        [friendsView setTitle:@"My Friends" ];
+        [friendsView setTitle:@"Pick Friends" ];
     }
     [friendsView loadData];
+    NSLog(@"values of the data ..%@",[friendsView fieldsForRequest]);
+    [friendsView fieldsForRequest];
     [friendsView clearSelection];
-    [self presentModalViewController:friendsView animated:YES];
+
+    // Present view controller modally.e the deprecated
+    if ([self
+         respondsToSelector:@selector(presentViewController:animated:completion:)]) {
+        // iOS 5+
+        [self presentViewController:friendsView
+                           animated:YES
+                         completion:nil];
+    } else {
+        [self presentModalViewController:friendsView animated:YES];
+    }
 }
 
 - (IBAction)normalTweetButtonAction:(id)sender
@@ -146,6 +157,7 @@
     [sharedTwitterSingleton getTwitterFriendsList];
     
     TwitterFriendsTableView *tableViewController = [[TwitterFriendsTableView alloc] initWithStyle:UITableViewStylePlain];
+    tableViewController.isFacebook = NO;
     [self.navigationController pushViewController:tableViewController animated:YES];
     [tableViewController release];
 }
@@ -190,6 +202,18 @@
     [[SocialMediaManager shareSocialMediaManager] messageComposerForFacebook:[UIImage imageNamed:@"Apple-logo.jpg"] message:@"Hello" url:addURL viewController:self];
 }
 
+- (IBAction)facebookFriendsList:(id)sender
+{
+    [[SocialMediaManager shareSocialMediaManager] facebookFriendsList];
+    
+    TwitterFriendsTableView *tableViewController = [[TwitterFriendsTableView alloc] initWithStyle:UITableViewStylePlain];
+    tableViewController.isFacebook = YES;
+    [self.navigationController pushViewController:tableViewController animated:YES];
+    [tableViewController release];
+
+}
+
+
 
 #pragma mark -
 #pragma mark Friends Picker Delegate methods
@@ -201,6 +225,7 @@
         [ids addObject:user.id];
         [names addObject:user.name];
     }
+    NSLog(@"here is the friends list %@",names);
     [self dismissModalViewControllerAnimated:YES];
 }
 
