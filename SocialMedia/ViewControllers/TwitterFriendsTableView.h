@@ -12,5 +12,8 @@
 @interface TwitterFriendsTableView : UITableViewController
 {
     TwitterManger *sharedTwitterSingleton;
+    BOOL isFacebook;
 }
+@property(nonatomic,assign) BOOL isFacebook;
+
 @end

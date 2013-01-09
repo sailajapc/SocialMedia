@@ -10,6 +10,13 @@
 
 #import "ViewController.h"
 
+#import <Accounts/ACAccountType.h>
+#import <Accounts/ACAccountCredential.h>
+
+#import <Accounts/ACAccountStore.h>
+#import <Accounts/ACAccount.h>
+
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -26,6 +33,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    ACAccountStore *accountStore;
+    ACAccountType *accountTypeFB;
+    if ((accountStore = [[ACAccountStore alloc] init]) &&
+        (accountTypeFB = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook] ) ){
+        
+        NSArray *fbAccounts = [accountStore accountsWithAccountType:accountTypeFB];
+        id account;
+        if (fbAccounts && [fbAccounts count] > 0 &&
+            (account = [fbAccounts objectAtIndex:0])){
+            
+            [accountStore renewCredentialsForAccount:account completion:^(ACAccountCredentialRenewResult renewResult, NSError *error) {
+                //we don't actually need to inspect renewResult or error.
+                if (error){
+                    
+                }
+            }];
+        }
+    }
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];

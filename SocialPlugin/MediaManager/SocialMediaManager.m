@@ -10,15 +10,23 @@
 #import "Utilites.h"
 #import "Reachability.h"
 #import <Social/Social.h>
-#import <Accounts/ACAccountStore.h>
-#import <Accounts/ACAccount.h>
 #import <Accounts/ACAccountType.h>
 #import <Accounts/ACAccountCredential.h>
+#import <Accounts/ACAccountStore.h>
+#import "FacebookInfo.h"
+
+#define FACEBOOK_APPID @"193319544145922"
+
+@interface SocialMediaManager (Private)
+
+- (void)getFacebookInformation;
+
+@end
 
 @implementation SocialMediaManager
+@synthesize fbFriendsListArray;
 
 static SocialMediaManager *shareSocialMediaManager;
-
 #pragma mark - Singleton Methods
 
 + (SocialMediaManager *)shareSocialMediaManager
@@ -80,6 +88,7 @@ static SocialMediaManager *shareSocialMediaManager;
     if (self)
     {
         // Custom initialization
+        fbFriendsListArray = [[NSMutableArray alloc] init];
         
     }
     return self;
@@ -137,6 +146,67 @@ static SocialMediaManager *shareSocialMediaManager;
             [viewController dismissViewControllerAnimated:YES completion:nil];
         }];
     }
+}
+
+- (void)facebookFriendsList
+{
+
+  ACAccountStore  *accountStore = [[ACAccountStore alloc]init];
+    ACAccountType *FBaccountType= [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    
+    NSString *key = FACEBOOK_APPID;
+    NSDictionary *dictFB = [NSDictionary dictionaryWithObjectsAndKeys:key,ACFacebookAppIdKey,@[@"email"],ACFacebookPermissionsKey, nil];
+    
+    
+    [accountStore requestAccessToAccountsWithType:FBaccountType options:dictFB completion:
+     ^(BOOL granted, NSError *e) {
+         if (granted) {
+             NSArray *accounts = [accountStore accountsWithAccountType:FBaccountType];
+             //it will always be the last object with single sign on
+             facebookAccount = [accounts lastObject];
+             NSLog(@"facebook account =%@",facebookAccount);
+             [self getFacebookInformation];
+         } else {
+             //Fail gracefully...
+             NSLog(@"error getting permission %@",e);
+             
+         }
+     }];
+
+}
+
+- (void)getFacebookInformation
+{
+    NSURL *requestURL = [NSURL URLWithString:@"https://graph.facebook.com/me/friends"];
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                            requestMethod:SLRequestMethodGET
+                                                      URL:requestURL
+                                               parameters:nil];
+    request.account = facebookAccount;
+    [request performRequestWithHandler:^(NSData *data,
+                                         NSHTTPURLResponse *response,
+                                         NSError *error) {
+        
+        if(!error)
+        {
+            NSDictionary *freindsDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSArray *freindsArray = [freindsDictionary valueForKey:@"data"];
+
+            [fbFriendsListArray removeAllObjects];
+            for (int i = 0; i < [freindsArray count]; i++)
+            {
+                FacebookInfo *facebookInfo = [[FacebookInfo alloc] init];
+                [facebookInfo setUserName:[[freindsArray objectAtIndex:i] objectForKey:@"name"]];
+                [facebookInfo setUserID:[[[freindsArray objectAtIndex:i] objectForKey:@"id"]integerValue]];
+                [fbFriendsListArray addObject:facebookInfo];
+            }
+        }
+        else{
+            //handle error gracefully
+            NSLog(@"error from get%@",error);
+            //attempt to revalidate credentials
+        }
+    }];
 }
 
 

@@ -9,12 +9,14 @@
 #import "TwitterFriendsTableView.h"
 #import "TwitterManger.h"
 #import "TwitterInfo.h"
+#import "SocialMediaManager.h"
 
 @interface TwitterFriendsTableView ()
 
 @end
 
 @implementation TwitterFriendsTableView
+@synthesize isFacebook;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,6 +26,7 @@
         
         sharedTwitterSingleton = [TwitterManger shareTwitterSingleton];
 
+        isFacebook = YES;
     }
     return self;
 }
@@ -54,6 +57,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (isFacebook) {
+        
+        return [[[SocialMediaManager shareSocialMediaManager] fbFriendsListArray] count];
+    }
     return [[sharedTwitterSingleton twitterFriendsListArray] count];
 }
 
@@ -66,18 +73,26 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
-    cell.textLabel.text = [[[sharedTwitterSingleton twitterFriendsListArray] objectAtIndex:indexPath.row] userName];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",[[[sharedTwitterSingleton twitterFriendsListArray] objectAtIndex:indexPath.row] userID]];
-    TwitterInfo *twitterInfo = [[sharedTwitterSingleton twitterFriendsListArray] objectAtIndex:indexPath.row];
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(concurrentQueue, ^{
-        NSURL  *url = [NSURL URLWithString:[twitterInfo imageUrl]];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.imageView.image = [UIImage imageWithData:data];
+    if (!isFacebook) {
+        cell.textLabel.text = [[[sharedTwitterSingleton twitterFriendsListArray] objectAtIndex:indexPath.row] userName];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",[[[sharedTwitterSingleton twitterFriendsListArray] objectAtIndex:indexPath.row] userID]];
+        TwitterInfo *twitterInfo = [[sharedTwitterSingleton twitterFriendsListArray] objectAtIndex:indexPath.row];
+        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(concurrentQueue, ^{
+            NSURL  *url = [NSURL URLWithString:[twitterInfo imageUrl]];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.imageView.image = [UIImage imageWithData:data];
+            });
         });
-    });
 
+    }
+    if (isFacebook)
+    {
+        cell.textLabel.text = [[[[SocialMediaManager shareSocialMediaManager] fbFriendsListArray] objectAtIndex:indexPath.row] userName];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",[[[[SocialMediaManager shareSocialMediaManager] fbFriendsListArray] objectAtIndex:indexPath.row] userID]];
+    }
+    
     return cell;
 }
 
